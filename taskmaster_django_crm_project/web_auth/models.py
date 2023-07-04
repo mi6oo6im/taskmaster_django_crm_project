@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.db import models
 from django.contrib.auth import get_user_model, models as auth_models
+from taskmaster_django_crm_project.utilities import TimestampMixin
 
 
 # Create your models here.
@@ -34,7 +35,7 @@ class AppUserManager(auth_models.BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
+class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, TimestampMixin):
     USERNAME_FIELD = 'email'
 
     objects = AppUserManager()
@@ -54,7 +55,7 @@ UserModel = get_user_model()
 
 
 # TODO finalize Profile model and make migrations
-class Profile(models.Model):
+class Profile(models.Model, TimestampMixin):
     first_name = models.CharField(
         max_length=30,
         null=False,
@@ -70,3 +71,6 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
