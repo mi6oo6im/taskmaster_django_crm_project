@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('taskmaster_django_crm_project.taskmaster.urls'))
+    path('', include('taskmaster_django_crm_project.taskmaster.urls')),
+    path('auth/', include('taskmaster_django_crm_project.web_auth.urls')),
 ]
