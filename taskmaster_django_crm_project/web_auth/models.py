@@ -1,7 +1,8 @@
 from django.contrib.auth.hashers import make_password
+from django.core import validators
 from django.db import models
 from django.contrib.auth import get_user_model, models as auth_models
-from taskmaster_django_crm_project.utilities import TimestampMixin
+from taskmaster_django_crm_project.utilities import TimestampMixin, ChoicesMixin
 
 
 # Create your models here.
@@ -54,23 +55,76 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin, Timest
 UserModel = get_user_model()
 
 
+class JobTitle(ChoicesMixin):
+    MANAGER = 'Manager'
+    SALES_ASSOCIATE = 'Sales Associate'
+    MARKETING_SPECIALIST = 'Marketing Specialist'
+    ENGINEER = 'Engineer'
+    OTHER = 'Other'
+
+
+class Department(ChoicesMixin):
+    SALES = 'Sales'
+    MARKETING = 'Marketing'
+    ENGINEERING = 'Engineering'
+    HR = 'Human Resources'
+    OTHER = 'Other'
+
+
 # TODO finalize Profile model and make migrations
-class Profile(models.Model, TimestampMixin):
+class Profile(TimestampMixin,models.Model):
     first_name = models.CharField(
         max_length=30,
         null=False,
         blank=False,
+        validators=(
+            validators.MinLengthValidator(2),
+        )
     )
     last_name = models.CharField(
         max_length=30,
         null=False,
         blank=False,
+        validators=(
+            validators.MinLengthValidator(2),
+        )
     )
+
+    @property
+    def full_name(self):
+        return self.first_name + " " + self.last_name
+
     user = models.OneToOneField(
         UserModel,
         primary_key=True,
         on_delete=models.CASCADE,
     )
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
-    is_deleted = models.BooleanField(default=False)
+    date_of_birth = models.DateField(
+        null=True,
+        blank=True,
+    )
+    phone_number = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+    profile_picture = models.ImageField(
+        upload_to='profile_picture/',
+        null=True,
+        blank=True,
+    )
+    job_title = models.CharField(
+        max_length=JobTitle.max_length(),
+        null=True,
+        blank=True,
+        choices=JobTitle.choices(),
+    )
+    department = models.CharField(
+        max_length=Department.max_length(),
+        null=True,
+        blank=True,
+        choices=Department.choices(),
+    )
+
+    def __str__(self):
+        return self.full_name

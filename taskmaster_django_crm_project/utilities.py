@@ -1,3 +1,5 @@
+from enum import Enum
+
 from django.db import models
 
 
@@ -8,3 +10,13 @@ class TimestampMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+class ChoicesMixin(Enum):
+    @classmethod
+    def choices(cls):
+        return tuple((item.name, item.value) for item in cls)
+
+    @classmethod
+    def max_length(cls):
+        return max(len(item.value) for item in cls)
