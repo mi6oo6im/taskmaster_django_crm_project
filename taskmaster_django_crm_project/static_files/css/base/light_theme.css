@@ -1,0 +1,64 @@
+body {
+  font-family: "Calibri Light", sans-serif;
+}
+
+/* Header styles */
+header {
+  background-color: #f0f8ff;
+  padding: 10px;
+}
+
+button {
+  width:22px;
+  height:22px;
+  font-size: larger;
+  position: relative;
+  border-radius: 60%;
+  border:none;
+  background-color:#f0f8ff;
+  aspect-ratio: 1/1;
+  padding: 0;
+}
+button:hover{
+  cursor: pointer;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav ul li a:hover {
+  font-weight: bold;
+  color: #8888;
+}
+
+.navbar {
+  text-align: right;
+}
+
+/* Main content styles */
+main {
+  padding: 20px;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f0f8ff;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}

@@ -14,6 +14,7 @@ class AppUserManager(auth_models.BaseUserManager):
         if not email:
             raise ValueError("The given username must be set")
 
+        email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.password = make_password(password)
         user.save(using=self._db)
@@ -72,7 +73,7 @@ class Department(ChoicesMixin):
 
 
 # TODO finalize Profile model and make migrations
-class Profile(TimestampMixin,models.Model):
+class Profile(TimestampMixin, models.Model):
     first_name = models.CharField(
         max_length=30,
         null=False,

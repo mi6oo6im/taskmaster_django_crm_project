@@ -131,6 +131,8 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'taskmaster_django_crm_project/static_files',
+    BASE_DIR / 'taskmaster_django_crm_project/static_files/css',
+    BASE_DIR / 'taskmaster_django_crm_project/static_files/js',
 ]
 
 # Default primary key field type
