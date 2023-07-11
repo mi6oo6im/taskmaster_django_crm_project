@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My CRM App{% endblock %}</title>
+    <title>TaskMaster | {% block title %}CRM {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base/light_theme.css' %}" id="theme-style">
-
+    <link rel="icon" type="image/x-icon" href="{% static 'icons/favicon.png' %}">
 </head>
 <body>
     <script src="{% static 'js/base/theme_change.js' %}"></script>
@@ -20,9 +20,10 @@
                         {# if user is logged in #}
                 <li><a href="{% url 'edit_profile' 1%}">Profile</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
                         {# if user is not logged in #}
                 <li><a href="{% url 'login' %}">Login</a></li>
-                <li><button onclick="toggleTheme()">◑</button></li>
+                <li><button onclick="toggleTheme()">🌓</button></li>
             </ul>
         </nav>
     </header>
@@ -36,8 +37,8 @@
 
     <!-- Footer -->
     <footer>
-            <p>Not &copy; 2023 Taskmaster CRM App. No rights reserved.</p>
-            <p>Designed and developed by Mi6oo6iM.</p>
+            <div>Not &copy; 2023 Taskmaster CRM App. No rights reserved.</div>
+            <div>Designed and developed by Mi6oo6iM.</div>
     </footer>
 
     <!-- Add your JavaScript and other script file links here -->

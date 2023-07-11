@@ -16,15 +16,21 @@ button {
   position: relative;
   border-radius: 60%;
   border:none;
-  background-color:#f0f8ff;
+  background-color: transparent;
   aspect-ratio: 1/1;
   padding: 0;
 }
+
 button:hover{
   cursor: pointer;
 }
 
+nav {
+  padding: 10px 10px 10px 10px;
+}
+
 nav ul {
+  font-size: 25px;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -52,6 +58,38 @@ nav ul li a:hover {
 main {
   padding: 20px;
   color: #f0f8ff;
+}
+
+p {
+  padding: 0;
+  font-size: 20px;
+}
+
+h1 {
+  padding: 15px;
+  font-size: 50px;
+}
+
+h2 {
+  padding: 10px;
+  font-size: 32px;
+}
+
+.articles {
+  display: flex;
+  flex-direction: row;
+}
+
+article {
+  width: 33%;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #f0f8ff ;
+  border-radius: 15px;
+  margin: 10px 10px 10px 10px;
+}
+
+a {
+  color: #f0f8ff
 }
 
 /* Footer styles */
