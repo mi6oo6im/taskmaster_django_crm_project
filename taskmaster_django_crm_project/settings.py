@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # django apps
+    # django apps:
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # my middlewares:
+    'taskmaster_django_crm_project.web_auth.middleware.LoginRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'taskmaster_django_crm_project.urls'

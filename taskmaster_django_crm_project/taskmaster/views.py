@@ -24,7 +24,7 @@ class DisplayAllCustomers(CreateView):
     pass
 
 
-class EditCustomer(CreateView):
+class UpdateCustomer(CreateView):
     pass
 
 
@@ -40,7 +40,7 @@ class DisplayAllTasks(CreateView):
     pass
 
 
-class EditTask(CreateView):
+class UpdateTask(CreateView):
     pass
 
 

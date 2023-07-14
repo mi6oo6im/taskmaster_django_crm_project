@@ -19,12 +19,12 @@
                 <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
                         {# if user is logged in #}
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'edit_profile' 1%}">{{ request.user }}</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'update_profile' 1%}">{{ request.user }}</a></li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>
                         {# if user is not logged in #}
                 {% else %}
                 <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}">Log in</a></li>
                 {% endif %}
                 <li><button onclick="toggleTheme()">🌓</button></li>
             </ul>
