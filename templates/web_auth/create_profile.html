@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Create Profile{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'create_profile' %}" method="post">
+        <h2>Create Profile</h2>
+        {% for row in form %}
+       <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" class="btn -btn">
+    </form>
+
+{% endblock %}
