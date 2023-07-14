@@ -7,11 +7,11 @@ class LoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if request.user.is_authenticated and request.path in [reverse_lazy('login'), reverse_lazy('register')]:
+        if request.user.is_authenticated and request.path in [reverse('login'), reverse('register')]:
             return redirect('index')
-        elif not request.user.is_authenticated and request.path in [reverse_lazy('my_tasks'),
-                                                                    reverse_lazy('my_dashboard'),
-                                                                    reverse_lazy('my_customers')]:
+        elif not request.user.is_authenticated and request.path in [reverse('my_tasks'),
+                                                                    reverse('my_dashboard'),
+                                                                    reverse('my_customers')]:
             return redirect('index')
 
         response = self.get_response(request)
