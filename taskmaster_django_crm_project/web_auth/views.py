@@ -8,9 +8,6 @@ from django.views import generic as views
 from django.urls import reverse_lazy
 
 
-# TODO change edit to update everywhere
-
-
 class RegisterUserView(views.CreateView):
     template_name = 'web_auth/register.html'
     form_class = RegisterUserForm

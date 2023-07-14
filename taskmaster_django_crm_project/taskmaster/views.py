@@ -8,41 +8,41 @@ from django.views.generic import CreateView, TemplateView
 UserModel = get_user_model()
 
 
-class DisplayHomepage(TemplateView):
+class DisplayHomepageView(TemplateView):
     template_name = 'taskmaster/index.html'
 
 
-class DisplayDashboard(CreateView):
+class DisplayDashboardView(CreateView):
     pass
 
 
-class CreateCustomer(CreateView):
+class CreateCustomerView(CreateView):
     pass
 
 
-class DisplayAllCustomers(CreateView):
+class DisplayAllCustomersView(CreateView):
     pass
 
 
-class UpdateCustomer(CreateView):
+class UpdateCustomerView(CreateView):
     pass
 
 
-class DeleteCustomer(CreateView):
+class DeleteCustomerView(CreateView):
     pass
 
 
-class CreateTask(CreateView):
+class CreateTaskView(CreateView):
     pass
 
 
-class DisplayAllTasks(CreateView):
+class DisplayAllTasksView(CreateView):
     pass
 
 
-class UpdateTask(CreateView):
+class UpdateTaskView(CreateView):
     pass
 
 
-class DeleteTask(CreateView):
+class DeleteTaskView(CreateView):
     pass

@@ -1,16 +1,16 @@
 from django.urls import path, include
-from .views import DisplayHomepage, DisplayDashboard, CreateCustomer, UpdateCustomer, DeleteCustomer, CreateTask,\
-    UpdateTask, DeleteTask, DisplayAllTasks, DisplayAllCustomers
+from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, DeleteCustomerView, CreateTaskView,\
+    UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView
 
 urlpatterns = (
-    path('', DisplayHomepage.as_view(), name='index'),
-    path('dashboard/', DisplayDashboard.as_view(), name='my_dashboard'),
-    path('customer/create/', CreateCustomer.as_view(), name='create_customer'),
-    path('customer/all', DisplayAllCustomers.as_view(), name='my_customers'),
-    path('customer/edit/<int:pk>/', UpdateCustomer.as_view(), name='update_customer'),
-    path('customer/delete/<int:pk>/', DeleteCustomer.as_view(), name='delete_customer'),
-    path('task/create/', CreateTask.as_view(), name='create_task'),
-    path('task/all/', DisplayAllTasks.as_view(), name='my_tasks'),
-    path('task/edit/<int:pk>/', UpdateTask.as_view(), name='update_task'),
-    path('task/delete/<int:pk>/', DeleteTask.as_view(), name='delete_task'),
+    path('', DisplayHomepageView.as_view(), name='index'),
+    path('dashboard/', DisplayDashboardView.as_view(), name='my_dashboard'),
+    path('customer/create/', CreateCustomerView.as_view(), name='create_customer'),
+    path('customer/all', DisplayAllCustomersView.as_view(), name='my_customers'),
+    path('customer/edit/<int:pk>/', UpdateCustomerView.as_view(), name='update_customer'),
+    path('customer/delete/<int:pk>/', DeleteCustomerView.as_view(), name='delete_customer'),
+    path('task/create/', CreateTaskView.as_view(), name='create_task'),
+    path('task/all/', DisplayAllTasksView.as_view(), name='my_tasks'),
+    path('task/edit/<int:pk>/', UpdateTaskView.as_view(), name='update_task'),
+    path('task/delete/<int:pk>/', DeleteTaskView.as_view(), name='delete_task'),
 )
