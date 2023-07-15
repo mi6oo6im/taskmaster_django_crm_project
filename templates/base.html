@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +13,12 @@
     <header>
         <nav class="navbar">
             <ul>
-                                        {# if user is logged in #}
+                    {# if user is logged in #}
                 {% if request.user.is_authenticated %}
                 <li><a href="{% url 'my_dashboard' %}">My Dashboard</a></li>
                 <li><a href="{% url 'my_customers' %}">My Customers</a></li>
                 <li><a href="{% url 'my_tasks' %}">My Tasks</a></li>
-                <li><a href="{% url 'update_profile' 1%}">{{ request.user }}</a></li>
+                <li><a href="{% url 'update_profile' request.user.pk %}">{{ request.user }}</a></li>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
                         {# if user is not logged in #}
                 {% else %}

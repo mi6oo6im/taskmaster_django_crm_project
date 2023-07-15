@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<div class="profile">
+    <form action="{% url 'update_profile' request.user.pk %}" method="post" enctype="multipart/form-data">
+
+        <h2>Update Profile</h2>
+        {% for row in form %}
+        <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+        <input type="submit" class="btn -btn">
+
+    </form>
+    {% if request.user.profile.profile_picture%}
+    <img src="{{ request.user.profile.profile_picture.url }}" alt="profile image">
+    {% else %}
+    <img src="{% static 'pictures/909657-profile_pic.png' %}" alt="anonymous user"  width="150" height="200">
+    {% endif %}
+</div>
+{% endblock %}

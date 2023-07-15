@@ -88,6 +88,15 @@ article {
   margin: 10px 10px 10px 10px;
 }
 
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  padding: 10px 10px 10px 10px;
+}
+
 a {
   color: #f0f8ff
 }

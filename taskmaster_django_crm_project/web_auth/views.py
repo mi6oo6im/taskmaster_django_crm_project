@@ -1,10 +1,5 @@
-from django import forms
-from django.http import HttpResponseRedirect
-
-from taskmaster_django_crm_project.web_auth.forms import RegisterUserForm
-from django.contrib.auth.forms import UsernameField, UserCreationForm
-from django.contrib.auth import get_user_model, views as auth_views, login
-from django.contrib.auth import login as auth_login
+from taskmaster_django_crm_project.web_auth.forms import RegisterUserForm, CreateProfileForm
+from django.contrib.auth import views as auth_views, login
 from django.views import generic as views
 from django.urls import reverse_lazy
 
@@ -31,15 +26,6 @@ class LogoutUserView(auth_views.LogoutView):
     template_name = 'web_auth/logout.html'
 
 
-class CreateProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        exclude = ['is_deleted', 'user']
-        widgets = {
-            'date_of_birth': forms.DateInput(attrs={'type': 'date'})
-        }
-
-
 class CreateProfileView(views.CreateView):
     template_name = 'web_auth/create_profile.html'
     form_class = CreateProfileForm
@@ -50,8 +36,12 @@ class CreateProfileView(views.CreateView):
         return super().form_valid(form)
 
 
-class UpdateProfileView(views.CreateView):
-    pass
+class UpdateProfileView(views.UpdateView):
+    template_name = 'web_auth/update_profile.html'
+    model = Profile
+    success_url = reverse_lazy('index')
+    fields = ['first_name', 'last_name', 'date_of_birth', 'phone_number',
+              'profile_picture', 'job_title', 'department']
 
 
 class DeleteProfileView(views.CreateView):
