@@ -13,6 +13,10 @@
     <header>
         <nav class="navbar">
             <ul>
+                {% if request.user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Administration</a></li>
+                {% endif %}
+                <li><a href="{% url 'index' %}">Home</a></li>
                     {# if user is logged in #}
                 {% if request.user.is_authenticated %}
                 <li><a href="{% url 'my_dashboard' %}">My Dashboard</a></li>

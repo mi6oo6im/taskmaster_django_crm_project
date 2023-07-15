@@ -44,5 +44,3 @@ class UpdateProfileView(views.UpdateView):
               'profile_picture', 'job_title', 'department']
 
 
-class DeleteProfileView(views.CreateView):
-    pass

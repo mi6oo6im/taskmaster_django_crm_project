@@ -15,7 +15,7 @@
 
     </form>
     {% if request.user.profile.profile_picture%}
-    <img src="{{ request.user.profile.profile_picture.url }}" alt="profile image">
+    <img src="{{ request.user.profile.profile_picture.url }}" alt="profile image"   width="150" height="200">
     {% else %}
     <img src="{% static 'pictures/909657-profile_pic.png' %}" alt="anonymous user"  width="150" height="200">
     {% endif %}

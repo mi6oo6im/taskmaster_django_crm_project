@@ -30,15 +30,16 @@ nav {
 }
 
 nav ul {
-  font-size: 25px;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
 nav ul li {
+  font-size: 25px;
   display: inline;
-  margin-right: 10px;
+  margin-right: 15px;
+  font-weight: bold;
 }
 
 nav ul li a {
