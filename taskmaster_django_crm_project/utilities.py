@@ -20,3 +20,5 @@ class ChoicesMixin(Enum):
     @classmethod
     def max_length(cls):
         return max(len(item.value) for item in cls)
+
+
