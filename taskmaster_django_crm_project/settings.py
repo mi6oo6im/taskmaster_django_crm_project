@@ -1,20 +1,24 @@
 import os.path
 from pathlib import Path
 
-from taskmaster_django_crm_project.postgress_pass import get_my_postgres_passwd
+from taskmaster_django_crm_project.postgress_pass import get_my_postgres_passwd, get_my_postgres_user, \
+    get_my_postgres_hostname, get_my_postgres_port, get_my_secret_key
 from django.template.context_processors import media
 from django.urls import reverse_lazy
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+POSTGRES_USER = get_my_postgres_user()
+POSTGRES_PASSWD = get_my_postgres_passwd()
+POSTGRES_HOST = get_my_postgres_hostname()
+POSTGRES_PORT = get_my_postgres_port()
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-89*kxy+a6lk#b36i4jvn4g%fytjo$2cj!_73^%!m@jn)sr0@54'
+SECRET_KEY = get_my_secret_key()
 
-POSTGRES_PASSWD = get_my_postgres_passwd()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -82,10 +86,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "taskmaster",
-        "USER": "mi6oo6im",
+        "USER": POSTGRES_USER,
         "PASSWORD": POSTGRES_PASSWD,
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "HOST": POSTGRES_HOST,
+        "PORT": POSTGRES_PORT,
     }
 }
 
