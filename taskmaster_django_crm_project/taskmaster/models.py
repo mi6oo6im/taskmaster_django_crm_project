@@ -40,6 +40,9 @@ class Organization(TimestampMixin, models.Model):
         choices=Industry.choices(),
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Customer(TimestampMixin, models.Model):
     name = models.CharField(

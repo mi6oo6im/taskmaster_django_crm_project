@@ -26,8 +26,3 @@ def get_my_secret_key():
     return variable_value
 
 
-print(get_my_postgres_user())
-print(get_my_postgres_passwd())
-print(get_my_postgres_hostname())
-print(get_my_postgres_port())
-print(get_my_secret_key())
