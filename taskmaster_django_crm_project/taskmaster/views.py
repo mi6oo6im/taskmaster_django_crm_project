@@ -3,7 +3,9 @@ from django.shortcuts import render
 
 # Create your views here.
 # Get the user module for auth view:
-from django.views.generic import CreateView, TemplateView, UpdateView
+from django.views.generic import CreateView, TemplateView, UpdateView, ListView
+
+from taskmaster_django_crm_project.taskmaster.models import Task
 
 UserModel = get_user_model()
 
@@ -44,9 +46,9 @@ class CreateTaskView(CreateView):
     pass
 
 
-class DisplayAllTasksView(CreateView):
-    pass
-
+class DisplayAllTasksView(ListView):
+    model = Task
+    template_name = 'taskmaster/my_tasks.html'
 
 class UpdateTaskView(CreateView):
     pass

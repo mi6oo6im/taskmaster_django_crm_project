@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<dev class="articles">
+    {% for task in object_list %}
+    <article class="tasks">
+            <h1>{{ task.title }}</h1>
+        <p>Customer: {{ task.company }}</p>
+        <ul>
+            <li><p>Description: {{ task.description }}</p></li>
+            <li><p>Task force: {{ task.company.sales_representative.name }}</p></li>
+            <li><p>Due date: {{ task.due_date }}</p></li>
+            {% if task.completed %}
+            <li><p>Status: Completed</p></li>
+            {% else %}
+            <li><p>Status: Pending</p></li>
+            {% endif %}
+        </ul>
+        <span><button></button></span>
+    </article>
+    {% endfor %}
+</dev>
+{% endblock %}

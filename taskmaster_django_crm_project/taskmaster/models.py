@@ -106,6 +106,9 @@ class Task(TimestampMixin, models.Model):
         null=True,
         blank=True,
     )
+    completed = models.BooleanField(
+        default=False,
+    )
     description = models.TextField(
         null=True,
         blank=True,

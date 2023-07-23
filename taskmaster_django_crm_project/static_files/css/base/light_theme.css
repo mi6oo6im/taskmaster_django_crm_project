@@ -75,7 +75,7 @@ h2 {
   font-size: 32px;
 }
 
-.articles {
+.articles{
   display: flex;
   flex-direction: row;
 }
