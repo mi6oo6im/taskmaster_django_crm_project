@@ -7,7 +7,10 @@
         <p>Customer: {{ task.company }}</p>
         <ul>
             <li><p>Description: {{ task.description }}</p></li>
-            <li><p>Task force: {{ task.company.sales_representative.name }}</p></li>
+            <li><p>Task force:</p></li>
+            {% for sales_representative in task.company.sales_representative.all %}
+            <p>{{ sales_representative.first_name }} {{ sales_representative.last_name }}</p>
+            {% endfor %}
             <li><p>Due date: {{ task.due_date }}</p></li>
             {% if task.completed %}
             <li><p>Status: Completed</p></li>
@@ -15,7 +18,23 @@
             <li><p>Status: Pending</p></li>
             {% endif %}
         </ul>
-        <span><button></button></span>
+        <div class="articles">
+            <form method="post" action="#">
+              {% csrf_token %}
+              <input type="hidden" name="task_id" value="{{ task.id }}">
+              <input type="submit" class="btn btn-success" value="Mark Completed">
+            </form>
+            <form method="post" action="#">
+              {% csrf_token %}
+              <input type="hidden" name="task_id" value="{{ task.id }}">
+              <input type="submit" class="btn btn-success" value="Update">
+            </form>
+            <form method="post" action="#">
+              {% csrf_token %}
+              <input type="hidden" name="task_id" value="{{ task.id }}">
+              <input type="submit" class="btn btn-success" value="Delete">
+            </form>
+        </div>
     </article>
     {% endfor %}
 </dev>

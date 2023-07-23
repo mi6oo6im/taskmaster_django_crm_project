@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Get the user module for auth view:
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView
 
-from taskmaster_django_crm_project.taskmaster.models import Task
+from taskmaster_django_crm_project.taskmaster.models import Task, Customer
 
 UserModel = get_user_model()
 
@@ -50,6 +50,16 @@ class DisplayAllTasksView(ListView):
     model = Task
     template_name = 'taskmaster/my_tasks.html'
 
+    def get_queryset(self):
+        user = self.request.user
+
+        customers = Customer.objects.filter(sales_representative__user=user)
+
+        queryset = Task.objects.filter(company__in=customers, is_deleted=False)
+
+        return queryset
+
+
 class UpdateTaskView(CreateView):
     pass
 
@@ -58,4 +68,3 @@ class DeleteTaskView(CreateView):
     pass
 
 # create test view
-

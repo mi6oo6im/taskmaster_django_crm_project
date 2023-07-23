@@ -78,6 +78,8 @@ h2 {
 .articles{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 article {
@@ -95,6 +97,18 @@ article {
 
 img {
   padding: 10px 10px 10px 10px;
+}
+
+.btn.btn-success, .btn.-btn {
+  background-color: #f0f8ff;
+  color: #666;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.btn.btn-success:hover, .btn.-btn:hover {
+  background-color: #bbd7ef;
 }
 
 /* Footer styles */
