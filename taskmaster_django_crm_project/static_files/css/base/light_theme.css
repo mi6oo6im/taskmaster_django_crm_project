@@ -99,7 +99,7 @@ img {
   padding: 10px 10px 10px 10px;
 }
 
-.btn.btn-success, .btn.-btn {
+.btn.btn-success{
   background-color: #f0f8ff;
   color: #666;
   border: none;
@@ -107,7 +107,7 @@ img {
   padding: 10px 20px;
   cursor: pointer;
 }
-.btn.btn-success:hover, .btn.-btn:hover {
+.btn.btn-success:hover{
   background-color: #bbd7ef;
 }
 

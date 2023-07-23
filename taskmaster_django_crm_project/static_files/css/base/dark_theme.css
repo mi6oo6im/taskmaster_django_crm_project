@@ -39,7 +39,6 @@ nav ul li {
   font-size: 25px;
   display: inline;
   margin-right: 15px;
-  font-weight: bold;
 }
 
 nav ul li a {
@@ -49,6 +48,7 @@ nav ul li a {
 
 nav ul li a:hover {
   font-weight: bold;
+  color: white;
 }
 
 .navbar {
@@ -104,7 +104,7 @@ a {
   color: #f0f8ff
 }
 
-.btn.btn-success, .btn.-btn {
+.btn.btn-success {
   background-color: #333333;
   color: #f0f8ff;
   border: none;
@@ -112,7 +112,7 @@ a {
   padding: 10px 20px;
   cursor: pointer;
 }
-.btn.btn-success:hover, .btn.-btn:hover {
+.btn.btn-success:hover {
   background-color: #8d888873;
 }
 

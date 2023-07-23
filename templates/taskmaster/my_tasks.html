@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
+{% block title %}My Tasks{% endblock %}
 {% block content %}
+
+<h1>My tasks</h1>
 <dev class="articles">
+    {% if object_list %}
     {% for task in object_list %}
     <article class="tasks">
             <h1>{{ task.title }}</h1>
@@ -19,23 +23,30 @@
             {% endif %}
         </ul>
         <div class="articles">
-            <form method="post" action="#">
+            {% if not task.completed %}
+            <form action="{% url 'complete_task' task.pk%}">
               {% csrf_token %}
-              <input type="hidden" name="task_id" value="{{ task.id }}">
               <input type="submit" class="btn btn-success" value="Mark Completed">
             </form>
-            <form method="post" action="#">
+            {% else %}
+            <form action="{% url 'pending_task' task.pk%}">
               {% csrf_token %}
-              <input type="hidden" name="task_id" value="{{ task.id }}">
+              <input type="submit" class="btn btn-success" value="Mark Pending">
+            </form>
+            {% endif %}
+            <form action="{% url 'update_task' task.pk%}">
+              {% csrf_token %}
               <input type="submit" class="btn btn-success" value="Update">
             </form>
-            <form method="post" action="#">
+            <form action="{% url 'delete_task' task.pk%}">
               {% csrf_token %}
-              <input type="hidden" name="task_id" value="{{ task.id }}">
               <input type="submit" class="btn btn-success" value="Delete">
             </form>
         </div>
     </article>
     {% endfor %}
+    {% else %}
+    <h1>No pending tasks</h1>
+    {% endif %}
 </dev>
 {% endblock %}

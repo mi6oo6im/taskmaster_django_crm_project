@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}My Tasks{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'update_task' task.pk%}" method="post">
+        {% for row in form %}
+        <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Update Task">
+    </form>
+
+{% endblock %}

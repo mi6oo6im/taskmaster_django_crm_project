@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Set Task to Pending</h1>
+    <form method="post"  action="{% url 'pending_task' task.pk%}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Set Task to Pending">
+    </form>
+    <form action="{% url 'my_tasks'%}">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Back to My Tasks">
+    </form>
+{% endblock%}
