@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Complete Task{% endblock %}
+{% block title %}Delete Task{% endblock %}
 {% block content %}
 
     <h1>Complete Task</h1>
-    <form method="post"  action="{% url 'complete_task' task.pk%}">
+    <form method="post"  action="{% url 'delete_task' task.pk%}">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="btn btn-success" value="Complete Task">
+        <input type="submit" class="btn btn-success" value="Delete Task">
     </form>
     <form action="{% url 'my_tasks'%}">
       {% csrf_token %}

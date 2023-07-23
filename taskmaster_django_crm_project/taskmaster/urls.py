@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, \
     DeleteCustomerView, CreateTaskView, \
     UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView
@@ -17,3 +17,4 @@ urlpatterns = (
     path('task/update/<int:pk>/', UpdateTaskView.as_view(), name='update_task'),
     path('task/delete/<int:pk>/', DeleteTaskView.as_view(), name='delete_task'),
 )
+# TODO contract, contact, offer and contract

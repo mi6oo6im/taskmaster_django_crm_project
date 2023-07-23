@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 # Get the user module for auth view:
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView
 
-from taskmaster_django_crm_project.taskmaster.forms import UpdateTaskForm
+from taskmaster_django_crm_project.taskmaster.forms import UpdateTaskForm, CreateTaskForm
 from taskmaster_django_crm_project.taskmaster.models import Task, Customer
 
 UserModel = get_user_model()
@@ -45,7 +45,10 @@ class DeleteCustomerView(CreateView):
 
 
 class CreateTaskView(CreateView):
-    pass
+    model = Task
+    template_name = 'taskmaster/create_task.html'
+    form_class = CreateTaskForm
+    success_url = reverse_lazy('my_tasks')
 
 
 class DisplayAllTasksView(ListView):
@@ -97,7 +100,16 @@ class UpdateTaskView(UpdateView):
     success_url = reverse_lazy('my_tasks')
 
 
-class DeleteTaskView(CreateView):
-    pass
+class DeleteTaskView(UpdateView):
+    model = Task
+    fields = []
+    template_name = 'taskmaster/delete_task.html'
+    success_url = reverse_lazy('my_tasks')
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        form.instance.is_deleted = True
+        self.object.save()
+        return super().form_valid(form)
 
 # create test view
