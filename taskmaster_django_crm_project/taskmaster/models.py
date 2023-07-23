@@ -45,6 +45,7 @@ class Organization(TimestampMixin, models.Model):
 
 
 class Customer(TimestampMixin, models.Model):
+    sales_representative = models.ManyToManyField('web_auth.Profile')
     name = models.CharField(
         max_length=100
     )
@@ -58,6 +59,9 @@ class Customer(TimestampMixin, models.Model):
         blank=True,
         choices=Industry.choices(),
     )
+
+    def __str__(self):
+        return self.name
 
 
 class Contact(TimestampMixin, models.Model):
@@ -86,6 +90,9 @@ class Contact(TimestampMixin, models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.name
+
 
 class Task(TimestampMixin, models.Model):
     company = models.ForeignKey(
@@ -104,6 +111,9 @@ class Task(TimestampMixin, models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return self.title
+
 
 class Offer(TimestampMixin, models.Model):
     company = models.ForeignKey(
@@ -119,6 +129,9 @@ class Offer(TimestampMixin, models.Model):
     )
     valid_until = models.DateField()
     potential_annual_value = models.FloatField()
+
+    def __str__(self):
+        return self.title
 
 
 class Contract(TimestampMixin, models.Model):
@@ -139,3 +152,6 @@ class Contract(TimestampMixin, models.Model):
         default=True,
     )
     annual_value = models.FloatField()
+
+    def __str__(self):
+        return self.title

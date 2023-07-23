@@ -72,7 +72,6 @@ class Department(ChoicesMixin):
     OTHER = 'Other'
 
 
-# TODO finalize Profile model and make migrations
 class Profile(TimestampMixin, models.Model):
     first_name = models.CharField(
         max_length=30,
@@ -134,6 +133,5 @@ class Profile(TimestampMixin, models.Model):
         on_delete=models.SET_NULL,
     )
 
-    # TODO add organization (ForeignKey to Organization)
     def __str__(self):
         return self.full_name

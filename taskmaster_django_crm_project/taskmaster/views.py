@@ -54,3 +54,6 @@ class UpdateTaskView(CreateView):
 
 class DeleteTaskView(CreateView):
     pass
+
+# create test view
+
