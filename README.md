@@ -22,8 +22,5 @@ Access the Taskmaster CRM web application through your browser at http://localho
 Create a user account or log in to an existing account.
 Explore the various features for managing tasks, contracts, offers, customers, and more.
 
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your enhancements.
-
 ## License
 This project is licensed under the MIT License.
