@@ -11,11 +11,12 @@ Contact information for customers and user-assigned tasks.
 Contract and offer creation and management.
 Task tracking and completion status.
 Responsive design and modern CSS styling.
-Monochrome 3D embossed logo with stylized 'T', 'M', and bear image.
+
 ## Installation
 Clone the repository and navigate to the project directory.
 Install the required dependencies: pip install -r requirements.txt
 Run the development server: python manage.py runserver
+
 ## Usage
 Access the Taskmaster CRM web application through your browser at http://localhost:8000/
 Create a user account or log in to an existing account.
