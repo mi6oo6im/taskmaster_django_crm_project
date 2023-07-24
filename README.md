@@ -1,7 +1,7 @@
 # taskmaster_django_crm_project
 Final project for Python Web Frameworks
 
-##Taskmaster CRM Project
+## Taskmaster CRM Project
 Taskmaster CRM is a web application built with Django, designed to manage tasks, contracts, offers, and customer information. The app uses modern heraldic art style for its logo, featuring stylized 'T' and 'M' capital letters with a stylized bear image.
 
 Features
