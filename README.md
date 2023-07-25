@@ -14,7 +14,7 @@ Responsive design and modern CSS styling.
 
 ## Installation
 Clone the repository and navigate to the project directory.
-Install the required dependencies: pip install -r requirements.txt
+Install the required dependencies: pip install -r requirements.txt <br>
 Run the development server: python manage.py runserver
 
 ## Usage
