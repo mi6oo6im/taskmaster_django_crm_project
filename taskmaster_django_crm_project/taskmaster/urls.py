@@ -1,10 +1,12 @@
 from django.urls import path
 from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, \
-    DeleteCustomerView, CreateTaskView, \
+    DeleteCustomerView, CreateTaskView, DisplayFeaturesView, DisplayTipsView, \
     UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView
 
 urlpatterns = (
     path('', DisplayHomepageView.as_view(), name='index'),
+    path('features/', DisplayFeaturesView.as_view(), name='features'),
+    path('tips/', DisplayTipsView.as_view(), name='tips'),
     path('dashboard/', DisplayDashboardView.as_view(), name='my_dashboard'),
     path('customer/create/', CreateCustomerView.as_view(), name='create_customer'),
     path('customer/all', DisplayAllCustomersView.as_view(), name='my_customers'),

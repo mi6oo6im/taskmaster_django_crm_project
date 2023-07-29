@@ -16,6 +16,14 @@ class DisplayHomepageView(TemplateView):
     template_name = 'taskmaster/index.html'
 
 
+class DisplayFeaturesView(TemplateView):
+    template_name = 'taskmaster/key_features.html'
+
+
+class DisplayTipsView(TemplateView):
+    template_name = 'taskmaster/tips_and_tricks.html'
+
+
 class CreateOrganisationView(CreateView):
     pass
 
