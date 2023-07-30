@@ -2,7 +2,7 @@
 {% block title %}Update Task{% endblock %}
 
 {% block content %}
-
+<h1>Update Task</h1>
     <form action="{% url 'update_task' task.pk%}" method="post">
         {% for row in form %}
         <p>{{ row.label }} {{ row }}</p>

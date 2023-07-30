@@ -2,7 +2,7 @@
 {% block title %}My Tasks{% endblock %}
 {% block content %}
 
-<h1>My tasks</h1>
+<h1>My Tasks</h1>
 <form action="{% url 'create_task' %}">
     {% csrf_token %}
     <input type="submit" class="btn btn-success" value="Create New Task">
@@ -12,18 +12,20 @@
     {% for task in object_list %}
     <article class="tasks">
             <h1>{{ task.title }}</h1>
-        <p>Customer: {{ task.company }}</p>
+        <p class="important">Customer: {{ task.company }}</p>
         <ul>
-            <li><p>Description: {{ task.description }}</p></li>
-            <li><p>Task force:</p></li>
+            <li><p class="important">Description:</p></li>
+            <p>{{ task.description }}</p>
+            <li><p class="important">Task force:</p></li>
             {% for sales_representative in task.company.sales_representative.all %}
             <p>{{ sales_representative.first_name }} {{ sales_representative.last_name }}</p>
             {% endfor %}
-            <li><p>Due date: {{ task.due_date }}</p></li>
+            <li><p class="important">Due date: </p></li>
+            <p>{{ task.due_date | date:"D d M Y" }}</p>
             {% if task.completed %}
-            <li><p>Status: Completed</p></li>
+            <li><p class="important">Status: Completed</p></li>
             {% else %}
-            <li><p>Status: Pending</p></li>
+            <li><p class="important">Status: Pending</p></li>
             {% endif %}
         </ul>
         <div class="articles">

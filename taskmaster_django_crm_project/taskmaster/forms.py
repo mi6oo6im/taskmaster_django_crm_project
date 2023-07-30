@@ -1,6 +1,6 @@
 from django import forms
 
-from taskmaster_django_crm_project.taskmaster.models import Task
+from taskmaster_django_crm_project.taskmaster.models import Task, Customer
 
 
 class CreateTaskForm(forms.ModelForm):
@@ -19,3 +19,15 @@ class UpdateTaskForm(forms.ModelForm):
         widgets = {
             'due_date': forms.DateInput(attrs={'type': 'date'})
         }
+
+
+class CreateCustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        exclude = ['is_deleted']
+
+
+class UpdateCustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        exclude = ['is_deleted']

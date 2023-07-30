@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}My Dashboard{% endblock %}
+{% block content %}
+
+<h1>My Dashboard</h1>
+<dev class="articles">
+    <article class="dashboard">
+            <h2># Active Customers: {{ total_customers }} | Total ACV: {{ total_acv_all_customers | floatformat:2 | intcomma }}$</h2>
+        <h2 class="important">Customer name | ACV $</h2>
+        <ul>
+        {% if object_list %}
+            {% for customer in object_list %}
+            <li><p class="important"> {{ customer }} | {{ customer.total_acv | floatformat:2 | intcomma }}$</p></li>
+            {% endfor %}
+            {% else %}
+            <li><p class="important">No customers assigned</p></li>
+        {% endif %}
+        </ul>
+    </article>
+    <article class="dashboard">
+            <h2># Active Offers: {{ total_offers }} | Potential ACV: {{ total_potential_acv_customers | floatformat:2 | intcomma }}$</h2>
+        <h2 class="important">Customer name | ACV $</h2>
+        <ul>
+        {% if object_list %}
+            {% for customer in object_list %}
+            <li><p class="important"> {{ customer }} | {{ customer.potential_acv | floatformat:2 | intcomma }}$</p></li>
+            {% endfor %}
+            {% else %}
+            <li><p class="important">No customers assigned</p></li>
+        {% endif %}
+        </ul>
+    </article>
+    <article class="dashboard">
+            <h2># Pending tasks: {{ total_tasks }} </h2>
+        <h2 class="important">Customer name | Task title | Status</h2>
+        <ul>
+        {% if object_list %}
+            {% for customer in object_list %}
+                {% for task in customer.task_set.all %}
+                    {% if not task.is_deleted %}
+            <li><p class="important"> {{ customer }} | {{ task }} | {% if task.completed %} Competed {% else %} Pending {% endif %}</p></li>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            {% else %}
+            <li><p class="important">No customers assigned</p></li>
+        {% endif %}
+        </ul>
+    </article>
+</dev>
+{% endblock %}

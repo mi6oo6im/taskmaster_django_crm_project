@@ -2,7 +2,7 @@
 {% block title %}Delete Task{% endblock %}
 {% block content %}
 
-    <h1>Complete Task</h1>
+    <h1>Delete Task</h1>
     <form method="post"  action="{% url 'delete_task' task.pk%}">
         {% csrf_token %}
         {{ form.as_p }}

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # my apps:
     'taskmaster_django_crm_project.web_auth',
     'taskmaster_django_crm_project.taskmaster',

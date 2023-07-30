@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}My Customers{% endblock %}
+{% block content %}
+
+<h1>My Customers</h1>
+<form action="{% url 'create_customer' %}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-success" value="Add New Customer">
+</form>
+<dev class="articles">
+    {% if object_list %}
+    {% for customer in object_list %}
+    <article class="customers">
+            <h1>{{ customer.name }}</h1>
+        <ul>
+            <li><p class="important">Contracts: {{ customer.contracts_count }} | Total ACV: {{ customer.total_acv | floatformat:2 | intcomma  }}$</p></li>
+
+            <li><p class="important">Offers: {{ customer.offers_count }} | Potential ACV: {{ customer.potential_acv | floatformat:2 | intcomma }}$</p></li>
+
+            <li><p class="important">Details:</p></li>
+            <p>Industry : {{ customer.industry | lower | capfirst }}</p>
+            <p>Address: {{ customer.address }}</p>
+            <li><p class="important">Contacts: </p></li>
+            {% for contact in customer.contact_set.all %}
+            <p>{{ contact.name }} | {{ contact.email }}</p>
+            {% endfor %}
+            <li><p class="important">Task force:</p></li>
+            {% for sales_representative in customer.sales_representative.all %}
+            <p>{{ sales_representative.first_name }} {{ sales_representative.last_name }}</p>
+            {% endfor %}
+
+        </ul>
+        <div class="articles">
+            <form action="#">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-success" value="Manage Contracts">
+            </form>
+            <form action="#">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-success" value="Manage Offers">
+            </form>
+            <form action="{% url 'update_customer' customer.pk%}">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-success" value="Update Details">
+            </form>
+        </div>
+    </article>
+    {% endfor %}
+    {% else %}
+    <h1>No customers assigned</h1>
+    {% endif %}
+</dev>
+{% endblock %}

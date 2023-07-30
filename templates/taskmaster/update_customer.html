@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Update Customer{% endblock %}
+
+{% block content %}
+<h1>Update Customer</h1>
+    <form action="{% url 'update_customer' customer.pk%}" method="post">
+        {% for row in form %}
+        <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Update Customer">
+    </form>
+        <form action="{% url 'delete_customer' customer.pk%}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-success" value="Delete Customer">
+    </form>
+{% endblock %}

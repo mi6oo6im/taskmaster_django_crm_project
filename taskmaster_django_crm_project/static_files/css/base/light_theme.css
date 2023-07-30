@@ -67,7 +67,7 @@ p {
 }
 
 h1 {
-  padding: 15px;
+  padding: 0 15px 0 15px;
   font-size: 50px;
   margin: 0;
 }
@@ -140,6 +140,10 @@ img.logo {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1); /* You can set the background color to semi-transparent to create an overlay effect */
   z-index: 2;
+}
+
+.important {
+  font-weight: bold;
 }
 
 /* Footer styles */
