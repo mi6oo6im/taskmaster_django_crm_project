@@ -10,8 +10,9 @@
         {% csrf_token %}
       <input type="submit" class="btn btn-success" value="Update Customer">
     </form>
-        <form action="{% url 'delete_customer' customer.pk%}">
+    <form action="{% url 'delete_customer' customer.pk%}">
         {% csrf_token %}
         <input type="submit" class="btn btn-success" value="Delete Customer">
     </form>
+
 {% endblock %}

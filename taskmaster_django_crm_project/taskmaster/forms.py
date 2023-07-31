@@ -1,6 +1,6 @@
 from django import forms
 
-from taskmaster_django_crm_project.taskmaster.models import Task, Customer
+from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Contact
 
 
 class CreateTaskForm(forms.ModelForm):
@@ -30,4 +30,10 @@ class CreateCustomerForm(forms.ModelForm):
 class UpdateCustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
+        exclude = ['is_deleted']
+
+
+class CreateContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
         exclude = ['is_deleted']

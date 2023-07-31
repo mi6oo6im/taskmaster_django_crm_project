@@ -1,7 +1,8 @@
 from django.urls import path
 from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, \
     DeleteCustomerView, CreateTaskView, DisplayFeaturesView, DisplayTipsView, \
-    UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView
+    UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView, \
+    CreateContactView
 
 urlpatterns = (
     path('', DisplayHomepageView.as_view(), name='index'),
@@ -18,5 +19,6 @@ urlpatterns = (
     path('task/pending/<int:pk>/', PendingTaskView.as_view(), name='pending_task'),
     path('task/update/<int:pk>/', UpdateTaskView.as_view(), name='update_task'),
     path('task/delete/<int:pk>/', DeleteTaskView.as_view(), name='delete_task'),
+    path('contact/create/<int:customer_id>/', CreateContactView.as_view(), name='create_contact'),
 )
-# TODO contract, contact, offer and contract
+# TODO contact, offer and contract

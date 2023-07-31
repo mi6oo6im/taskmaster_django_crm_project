@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Create Contact{% endblock %}
+
+{% block content %}
+<h1>Create Contact</h1>
+    <form action="{% url 'create_contact' customer_id=customer_id%}" method="post">
+        {% for row in form %}
+        <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Create Contact">
+    </form>
+
+{% endblock %}
