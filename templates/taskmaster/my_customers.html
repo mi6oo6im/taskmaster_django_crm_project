@@ -23,7 +23,7 @@
             <p>Address: {{ customer.address }}</p>
             <li><p class="important">Contacts: </p></li>
             {% for contact in customer.contact_set.all %}
-            <p>{{ contact.name }} | {{ contact.email }} | <a href="#">update</a> | <a href="#">delete</a></p>
+            <p>{{ contact.name }} | {{ contact.email }} | {{ contact.contact_number }} | <a href="{% url 'update_contact' contact.pk %}">📝</a> | <a href="{% url 'delete_contact' contact.pk %}">❌</a></p>
             {% endfor %}
             <form action="{% url 'create_contact' customer.pk %}">
                 {% csrf_token %}

@@ -37,3 +37,9 @@ class CreateContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         exclude = ['is_deleted']
+
+
+class UpdateContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        exclude = ['is_deleted', 'company']

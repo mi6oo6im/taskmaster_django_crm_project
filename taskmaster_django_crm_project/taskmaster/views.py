@@ -2,9 +2,9 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.db.models import Sum, Count
-from django.views.generic import CreateView, TemplateView, UpdateView, ListView
+from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from taskmaster_django_crm_project.taskmaster.forms import UpdateTaskForm, CreateTaskForm, CreateCustomerForm, \
-    UpdateCustomerForm, CreateContactForm
+    UpdateCustomerForm, CreateContactForm, UpdateContactForm
 from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Offer, Contact
 
 UserModel = get_user_model()
@@ -218,3 +218,16 @@ class CreateContactView(CreateView):
         customer = get_object_or_404(Customer, pk=customer_id)
         initial['company'] = customer
         return initial
+
+
+class UpdateContactView(UpdateView):
+    model = Contact
+    template_name = 'taskmaster/update_contact.html'
+    form_class = UpdateContactForm
+    success_url = reverse_lazy('my_customers')
+
+
+class DeleteContactView(DeleteView):
+    model = Contact
+    template_name = 'taskmaster/delete_contact.html'
+    success_url = reverse_lazy('my_customers')

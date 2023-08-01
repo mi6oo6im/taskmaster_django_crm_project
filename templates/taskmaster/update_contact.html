@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Update Contact{% endblock %}
+
+{% block content %}
+<h1>Update Contact</h1>
+    <form action="{% url 'update_contact' contact.pk%}" method="post">
+        {% for row in form %}
+        <p>{{ row.label }} {{ row }}</p>
+        {% endfor %}
+        {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Update Contact">
+    </form>
+
+{% endblock %}
