@@ -2,7 +2,7 @@ from django.urls import path
 from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, \
     DeleteCustomerView, CreateTaskView, DisplayFeaturesView, DisplayTipsView, \
     UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView, \
-    CreateContactView, UpdateContactView, DeleteContactView
+    CreateContactView, UpdateContactView, DeleteContactView, DisplayContractsView, CreateContractView
 
 urlpatterns = (
     path('', DisplayHomepageView.as_view(), name='index'),
@@ -22,5 +22,7 @@ urlpatterns = (
     path('contact/create/<int:customer_id>/', CreateContactView.as_view(), name='create_contact'),
     path('contact/update/<int:pk>/', UpdateContactView.as_view(), name='update_contact'),
     path('contact/delete/<int:pk>/', DeleteContactView.as_view(), name='delete_contact'),
+    path('contract/display/<int:customer_id>/', DisplayContractsView.as_view(), name='display_contracts'),
+    path('contract/create/<int:customer_id>/', CreateContractView.as_view(), name='create_contract'),
 )
-# TODO contact, offer and contract
+# TODO offer and contract

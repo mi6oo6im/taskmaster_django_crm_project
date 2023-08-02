@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %}Contracts{% endblock %}
+{% block content %}
+
+<h1>{{ customer_name }}'s Contracts</h1>
+<form action="{% url 'create_contract' customer_id=customer_id%}">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-success" value="Create New Contract">
+</form>
+<dev class="articles">
+    {% if object_list %}
+    {% for contract in object_list %}
+    <article class="tasks">
+            <h2>{{ contract.title }}</h2>
+        <ul>
+            <li><p class="important">Description:</p></li>
+            <p>{{ contract.description }}</p>
+            {% if contract.is_active %}
+            <li><p class="important">Status: Active</p></li>
+            <li><p class="important">Valid from:</p></li>
+                <p>{{ contract.start_date | date:"D d M Y" }}</p>
+            <li><p class="important">Valid until:</p></li>
+                <p>{{ contract.end_date | date:"D d M Y" }}</p>
+            {% else %}
+            <li><p class="important">Status: Expired</p></li>
+            {% endif %}
+            <li><p class="important">ACV: {{ contract.annual_value | floatformat:2 | intcomma  }}$</p></li>
+        </ul>
+        <div class="articles">
+            <form action="#">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-success" value="Update">
+            </form>
+            <form action="#">
+              {% csrf_token %}
+              <input type="submit" class="btn btn-success" value="Delete">
+            </form>
+        </div>
+    </article>
+    {% endfor %}
+    {% else %}
+    <h1>No signed contracts</h1>
+    {% endif %}
+</dev>
+{% endblock %}

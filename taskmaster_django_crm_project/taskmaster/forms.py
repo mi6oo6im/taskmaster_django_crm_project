@@ -1,6 +1,6 @@
 from django import forms
 
-from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Contact
+from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Contact, Contract
 
 
 class CreateTaskForm(forms.ModelForm):
@@ -43,3 +43,13 @@ class UpdateContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         exclude = ['is_deleted', 'company']
+
+
+class CreateContractForm(forms.ModelForm):
+    class Meta:
+        model = Contract
+        exclude = ['is_deleted']
+        widgets = {
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }

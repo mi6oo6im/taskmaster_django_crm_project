@@ -35,7 +35,7 @@
             {% endfor %}
         </ul>
         <div class="articles">
-            <form action="#">
+            <form action="{% url 'display_contracts' customer.pk%}">
               {% csrf_token %}
               <input type="submit" class="btn btn-success" value="Manage Contracts">
             </form>

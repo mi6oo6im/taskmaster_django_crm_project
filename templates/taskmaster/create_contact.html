@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>Create Contact</h1>
-    <form action="{% url 'create_contact' customer_id=customer_id%}" method="post">
+    <form action="{% url 'create_contact' customer_id%}" method="post">
         {% for row in form %}
         <p>{{ row.label }} {{ row }}</p>
         {% endfor %}

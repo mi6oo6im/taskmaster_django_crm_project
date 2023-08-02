@@ -4,8 +4,8 @@ from django.urls import reverse_lazy
 from django.db.models import Sum, Count
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from taskmaster_django_crm_project.taskmaster.forms import UpdateTaskForm, CreateTaskForm, CreateCustomerForm, \
-    UpdateCustomerForm, CreateContactForm, UpdateContactForm
-from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Offer, Contact
+    UpdateCustomerForm, CreateContactForm, UpdateContactForm, CreateContractForm
+from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Offer, Contact, Contract
 
 UserModel = get_user_model()
 
@@ -231,3 +231,44 @@ class DeleteContactView(DeleteView):
     model = Contact
     template_name = 'taskmaster/delete_contact.html'
     success_url = reverse_lazy('my_customers')
+
+
+class DisplayContractsView(ListView):
+    model = Contract
+    template_name = 'taskmaster/contracts.html'
+
+    def get_queryset(self):
+        customer_id = self.kwargs.get('customer_id')
+        customer = get_object_or_404(Customer, pk=customer_id)
+        queryset = Contract.objects.filter(company=customer)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        customer_id = self.kwargs.get('customer_id')
+        customer = get_object_or_404(Customer, pk=customer_id)
+        context['customer_name'] = customer.name
+        context['customer_id'] = customer.pk
+        return context
+
+
+class CreateContractView(CreateView):
+    model = Contract
+    template_name = 'taskmaster/create_contract.html'
+    form_class = CreateContractForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['customer_id'] = self.kwargs['customer_id']
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        customer_id = self.kwargs['customer_id']
+        customer = get_object_or_404(Customer, pk=customer_id)
+        initial['company'] = customer
+        return initial
+
+    def get_success_url(self):
+        customer_id = self.kwargs['customer_id']
+        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
