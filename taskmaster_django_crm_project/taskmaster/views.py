@@ -4,7 +4,8 @@ from django.urls import reverse_lazy
 from django.db.models import Sum, Count
 from django.views.generic import CreateView, TemplateView, UpdateView, ListView, DeleteView
 from taskmaster_django_crm_project.taskmaster.forms import UpdateTaskForm, CreateTaskForm, CreateCustomerForm, \
-    UpdateCustomerForm, CreateContactForm, UpdateContactForm, CreateContractForm
+    UpdateCustomerForm, CreateContactForm, UpdateContactForm, CreateContractForm, UpdateContractForm, CreateOfferForm, \
+    UpdateOfferForm
 from taskmaster_django_crm_project.taskmaster.models import Task, Customer, Offer, Contact, Contract
 
 UserModel = get_user_model()
@@ -235,7 +236,7 @@ class DeleteContactView(DeleteView):
 
 class DisplayContractsView(ListView):
     model = Contract
-    template_name = 'taskmaster/contracts.html'
+    template_name = 'taskmaster/my_contracts.html'
 
     def get_queryset(self):
         customer_id = self.kwargs.get('customer_id')
@@ -272,3 +273,83 @@ class CreateContractView(CreateView):
     def get_success_url(self):
         customer_id = self.kwargs['customer_id']
         return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
+
+
+class UpdateContractView(UpdateView):
+    model = Contract
+    template_name = 'taskmaster/update_contract.html'
+    form_class = UpdateContractForm
+
+    def get_success_url(self):
+        customer_id = self.object.company.id
+        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
+
+
+class DeleteContractView(DeleteView):
+    model = Contract
+    template_name = 'taskmaster/delete_contract.html'
+
+    def get_success_url(self):
+        customer_id = self.object.company.id
+        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
+
+
+class DisplayOffersView(ListView):
+    model = Offer
+    template_name = 'taskmaster/my_offers.html'
+
+    def get_queryset(self):
+        customer_id = self.kwargs.get('customer_id')
+        customer = get_object_or_404(Customer, pk=customer_id)
+        queryset = Offer.objects.filter(company=customer)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        customer_id = self.kwargs.get('customer_id')
+        customer = get_object_or_404(Customer, pk=customer_id)
+        context['customer_name'] = customer.name
+        context['customer_id'] = customer.pk
+        return context
+
+
+class CreateOfferView(CreateView):
+    model = Offer
+    template_name = 'taskmaster/create_offer.html'
+    form_class = CreateOfferForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['customer_id'] = self.kwargs['customer_id']
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        customer_id = self.kwargs['customer_id']
+        customer = get_object_or_404(Customer, pk=customer_id)
+        initial['company'] = customer
+        return initial
+
+    def get_success_url(self):
+        customer_id = self.kwargs['customer_id']
+        return reverse_lazy('display_offers', kwargs={'customer_id': customer_id})
+
+
+class UpdateOfferView(UpdateView):
+    model = Offer
+    template_name = 'taskmaster/update_offer.html'
+    form_class = UpdateOfferForm
+
+    def get_success_url(self):
+        customer_id = self.object.company.id
+        return reverse_lazy('display_offers', kwargs={'customer_id': customer_id})
+
+
+class DeleteOfferView(DeleteView):
+    model = Contract
+    template_name = 'taskmaster/delete_offer.html'
+
+    def get_success_url(self):
+        customer_id = self.object.company.id
+        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
+

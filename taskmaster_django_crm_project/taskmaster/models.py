@@ -1,5 +1,7 @@
 from django.core import validators
 from django.db import models
+from django.utils import timezone
+
 from taskmaster_django_crm_project.utilities import TimestampMixin, ChoicesMixin
 
 
@@ -132,6 +134,10 @@ class Offer(TimestampMixin, models.Model):
     )
     valid_until = models.DateField()
     potential_annual_value = models.FloatField()
+
+    @property
+    def is_valid(self):
+        return self.valid_until >= timezone.now().date()
 
     def __str__(self):
         return self.title

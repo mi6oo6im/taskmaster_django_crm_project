@@ -2,7 +2,8 @@ from django.urls import path
 from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView, UpdateCustomerView, \
     DeleteCustomerView, CreateTaskView, DisplayFeaturesView, DisplayTipsView, \
     UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView, \
-    CreateContactView, UpdateContactView, DeleteContactView, DisplayContractsView, CreateContractView
+    CreateContactView, UpdateContactView, DeleteContactView, DisplayContractsView, CreateContractView, \
+    UpdateContractView, DeleteContractView, DisplayOffersView, CreateOfferView, UpdateOfferView
 
 urlpatterns = (
     path('', DisplayHomepageView.as_view(), name='index'),
@@ -24,5 +25,10 @@ urlpatterns = (
     path('contact/delete/<int:pk>/', DeleteContactView.as_view(), name='delete_contact'),
     path('contract/display/<int:customer_id>/', DisplayContractsView.as_view(), name='display_contracts'),
     path('contract/create/<int:customer_id>/', CreateContractView.as_view(), name='create_contract'),
+    path('contract/update/<int:pk>/', UpdateContractView.as_view(), name='update_contract'),
+    path('contract/delete/<int:pk>/', DeleteContractView.as_view(), name='delete_contract'),
+    path('offer/display/<int:customer_id>/', DisplayOffersView.as_view(), name='display_offers'),
+    path('offer/create/<int:customer_id>/', CreateOfferView.as_view(), name='create_offer'),
+    path('offer/update/<int:pk>/', UpdateOfferView.as_view(), name='update_offer'),
 )
 # TODO offer and contract
