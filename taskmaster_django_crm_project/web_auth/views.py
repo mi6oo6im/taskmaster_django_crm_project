@@ -1,8 +1,7 @@
-from taskmaster_django_crm_project.web_auth.forms import RegisterUserForm, CreateProfileForm
+from taskmaster_django_crm_project.web_auth.forms import RegisterUserForm, CreateProfileForm, UpdateProfileForm
 from django.contrib.auth import views as auth_views, login
 from django.views import generic as views
 from django.urls import reverse_lazy
-
 from taskmaster_django_crm_project.web_auth.models import Profile
 
 
@@ -39,8 +38,7 @@ class CreateProfileView(views.CreateView):
 class UpdateProfileView(views.UpdateView):
     template_name = 'web_auth/update_profile.html'
     model = Profile
+    form_class = UpdateProfileForm
     success_url = reverse_lazy('index')
-    fields = ['first_name', 'last_name', 'date_of_birth', 'phone_number',
-              'profile_picture', 'job_title', 'department']
 
 

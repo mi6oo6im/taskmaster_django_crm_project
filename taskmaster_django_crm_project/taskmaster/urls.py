@@ -3,7 +3,8 @@ from .views import DisplayHomepageView, DisplayDashboardView, CreateCustomerView
     DeleteCustomerView, CreateTaskView, DisplayFeaturesView, DisplayTipsView, \
     UpdateTaskView, DeleteTaskView, DisplayAllTasksView, DisplayAllCustomersView, CompleteTaskView, PendingTaskView, \
     CreateContactView, UpdateContactView, DeleteContactView, DisplayContractsView, CreateContractView, \
-    UpdateContractView, DeleteContractView, DisplayOffersView, CreateOfferView, UpdateOfferView
+    UpdateContractView, DeleteContractView, DisplayOffersView, CreateOfferView, UpdateOfferView, DeleteOfferView, \
+    ConvertOfferToContractView
 
 urlpatterns = (
     path('', DisplayHomepageView.as_view(), name='index'),
@@ -30,5 +31,8 @@ urlpatterns = (
     path('offer/display/<int:customer_id>/', DisplayOffersView.as_view(), name='display_offers'),
     path('offer/create/<int:customer_id>/', CreateOfferView.as_view(), name='create_offer'),
     path('offer/update/<int:pk>/', UpdateOfferView.as_view(), name='update_offer'),
+    path('offer/delete/<int:pk>/', DeleteOfferView.as_view(), name='delete_offer'),
+    path('contract/convert/<int:customer_id>/<str:title>/<str:description>/<str:potential_annual_value>/',
+         ConvertOfferToContractView.as_view(), name='convert_offer_to_contract'),
 )
 # TODO offer and contract

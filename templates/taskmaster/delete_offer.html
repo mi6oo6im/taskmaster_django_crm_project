@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Delete Offer{% endblock %}
+{% block content %}
+
+    <h1>Delete Offer {{offer.title}}</h1>
+    <form method="post"  action="{% url 'delete_offer' offer.pk%}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Delete Offer">
+    </form>
+    <form action="{% url 'display_offers' object.company.pk%}">
+      {% csrf_token %}
+      <input type="submit" class="btn btn-success" value="Back to Offers">
+    </form>
+{% endblock%}

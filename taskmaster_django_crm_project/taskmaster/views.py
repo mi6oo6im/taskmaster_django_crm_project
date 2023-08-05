@@ -346,10 +346,40 @@ class UpdateOfferView(UpdateView):
 
 
 class DeleteOfferView(DeleteView):
-    model = Contract
+    model = Offer
     template_name = 'taskmaster/delete_offer.html'
 
     def get_success_url(self):
         customer_id = self.object.company.id
-        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})
+        return reverse_lazy('display_offers', kwargs={'customer_id': customer_id})
 
+
+class ConvertOfferToContractView(CreateView):
+    model = Contract
+    template_name = 'taskmaster/create_contract.html'
+    form_class = CreateContractForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['customer_id'] = self.kwargs['customer_id']
+        context['title'] = self.kwargs['title']
+        context['description'] = self.kwargs['description']
+        context['annual_value'] = self.kwargs['potential_annual_value']
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        customer_id = self.kwargs['customer_id']
+        title = self.kwargs['title']
+        description = self.kwargs['description']
+        potential_annual_value = float(self.kwargs['potential_annual_value'])
+        customer = get_object_or_404(Customer, pk=customer_id)
+        initial['company'] = customer
+        initial['title'] = title
+        initial['description'] = description
+        initial['annual_value'] = potential_annual_value
+        return initial
+
+    def get_success_url(self):
+        customer_id = self.kwargs['customer_id']
+        return reverse_lazy('display_contracts', kwargs={'customer_id': customer_id})

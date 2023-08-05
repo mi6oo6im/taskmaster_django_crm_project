@@ -33,3 +33,13 @@ class CreateProfileForm(forms.ModelForm):
         widgets = {
             'date_of_birth': forms.DateInput(attrs={'type': 'date'})
         }
+
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'date_of_birth', 'phone_number',
+                  'profile_picture', 'job_title', 'department']
+        widgets = {
+            'date_of_birth': forms.DateInput(attrs={'type': 'date'})
+        }
