@@ -6,6 +6,7 @@
     <form action="{% url 'create_profile' %}" method="post" enctype="multipart/form-data">
         <h2>Create Profile</h2>
         {% for row in form %}
+       <p class="error_note">{{ row.errors }}</p>
        <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}

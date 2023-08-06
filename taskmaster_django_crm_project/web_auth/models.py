@@ -2,7 +2,7 @@ from django.contrib.auth.hashers import make_password
 from django.core import validators
 from django.db import models
 from django.contrib.auth import get_user_model, models as auth_models
-
+from taskmaster_django_crm_project.validators import validate_first_capital, validate_all_alpha
 from taskmaster_django_crm_project.taskmaster.models import Organization
 from taskmaster_django_crm_project.utilities import TimestampMixin, ChoicesMixin
 
@@ -79,6 +79,8 @@ class Profile(TimestampMixin, models.Model):
         blank=False,
         validators=(
             validators.MinLengthValidator(2),
+            validate_all_alpha,
+            validate_first_capital,
         )
     )
     last_name = models.CharField(
@@ -87,6 +89,8 @@ class Profile(TimestampMixin, models.Model):
         blank=False,
         validators=(
             validators.MinLengthValidator(2),
+            validate_all_alpha,
+            validate_first_capital,
         )
     )
 

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 
 
 class LoginRequiredMiddleware:
