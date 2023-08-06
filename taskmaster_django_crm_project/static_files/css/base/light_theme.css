@@ -146,6 +146,10 @@ img.logo {
   font-weight: bold;
 }
 
+.errorlist {
+  color: red;
+}
+
 /* Footer styles */
 footer {
   background-color: #f0f8ff;

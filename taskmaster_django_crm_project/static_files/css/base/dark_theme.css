@@ -149,6 +149,9 @@ img.logo {
   font-weight: bold;
 }
 
+.errorlist {
+  color: #ff7800; !important;
+}
 
 /* Footer styles */
 footer {

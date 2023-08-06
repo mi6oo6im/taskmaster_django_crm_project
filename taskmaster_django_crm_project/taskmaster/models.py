@@ -1,8 +1,8 @@
 from django.core import validators
 from django.db import models
 from django.utils import timezone
-
 from taskmaster_django_crm_project.utilities import TimestampMixin, ChoicesMixin
+from taskmaster_django_crm_project.validators import validate_first_capital, validate_all_alpha
 
 
 class Industry(ChoicesMixin):
@@ -79,6 +79,8 @@ class Contact(TimestampMixin, models.Model):
         blank=False,
         validators=(
             validators.MinLengthValidator(2),
+            validate_first_capital,
+            validate_all_alpha,
         )
     )
     email = models.EmailField(
@@ -103,6 +105,9 @@ class Task(TimestampMixin, models.Model):
     )
     title = models.CharField(
         max_length=200,
+        validators=(
+            validators.MinLengthValidator(2),
+        )
     )
     due_date = models.DateField(
         null=True,
@@ -127,13 +132,20 @@ class Offer(TimestampMixin, models.Model):
     )
     title = models.CharField(
         max_length=200,
+        validators=(
+            validators.MinLengthValidator(2),
+        )
     )
     description = models.TextField(
         null=True,
         blank=True,
     )
     valid_until = models.DateField()
-    potential_annual_value = models.FloatField()
+    potential_annual_value = models.FloatField(
+        validators=(
+            validators.MinLengthValidator(1),
+        ),
+    )
 
     @property
     def is_valid(self):
@@ -150,6 +162,9 @@ class Contract(TimestampMixin, models.Model):
     )
     title = models.CharField(
         max_length=200,
+        validators=(
+            validators.MinLengthValidator(2),
+        ),
     )
     start_date = models.DateField()
     end_date = models.DateField()
@@ -160,7 +175,11 @@ class Contract(TimestampMixin, models.Model):
     is_active = models.BooleanField(
         default=True,
     )
-    annual_value = models.FloatField()
+    annual_value = models.FloatField(
+        validators=(
+            validators.MinLengthValidator(1),
+        ),
+    )
 
     def __str__(self):
         return self.title

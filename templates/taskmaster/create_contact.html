@@ -5,6 +5,7 @@
 <h1>Create Contact</h1>
     <form action="{% url 'create_contact' customer_id%}" method="post">
         {% for row in form %}
+        <p class="error_note">{{ row.errors }}</p>
         <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}
