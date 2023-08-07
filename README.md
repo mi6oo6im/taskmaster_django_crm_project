@@ -27,4 +27,7 @@ This project is licensed under the MIT License.
 
 
 ## Preview:
+### Home page light theme:
 ![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Home_light_theme.png?raw=true "Home page light theme")
+### Home page dark theme:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Home_dark_theme.png?raw=true "Home page dark theme")
