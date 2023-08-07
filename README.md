@@ -39,3 +39,7 @@ This project is licensed under the MIT License.
 ![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Update_user_profile.png?raw=true "Update user profile Light theme")
 ### My Customers dark theme:
 ![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/My_customers_dark.png?raw=true "My customers dark theme")
+### Dashboard light theme:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Dashboard_light.png?raw=true "Dashboard light theme")
+### My Tasks dark theme:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/My_tasks_dark.png?raw=true "My tasks dark theme")
