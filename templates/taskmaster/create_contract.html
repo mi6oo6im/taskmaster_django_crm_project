@@ -5,6 +5,7 @@
 <h1>Create Contract</h1>
     <form action="{% url 'create_contract' customer_id=customer_id%}" method="post">
         {% for row in form %}
+        <p class="error_note">{{ row.errors }}</p>
         <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}

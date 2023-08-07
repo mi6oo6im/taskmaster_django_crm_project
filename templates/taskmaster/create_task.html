@@ -5,8 +5,8 @@
 <h1>Create Task</h1>
     <form action="{% url 'create_task' %}" method="post">
         {% for row in form %}
-        <p class="error_note">{{ row.errors }}</p>
-        <p>{{ row.label }} {{ row }}</p>
+            <p class="error_note">{{ row.errors }}</p>
+            <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}
       <input type="submit" class="btn btn-success" value="Create Task">

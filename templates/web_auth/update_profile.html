@@ -8,7 +8,8 @@
 
         <h2>Update Profile</h2>
         {% for row in form %}
-        <p>{{ row.label }} {{ row }}</p>
+            <p class="error_note">{{ row.errors }}</p>
+            <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}
         <input type="submit" class="btn -btn">

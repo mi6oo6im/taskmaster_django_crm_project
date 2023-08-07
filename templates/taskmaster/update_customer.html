@@ -5,6 +5,7 @@
 <h1>Update Customer</h1>
     <form action="{% url 'update_customer' customer.pk%}" method="post">
         {% for row in form %}
+        <p class="error_note">{{ row.errors }}</p>
         <p>{{ row.label }} {{ row }}</p>
         {% endfor %}
         {% csrf_token %}
