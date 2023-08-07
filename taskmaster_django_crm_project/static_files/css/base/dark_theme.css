@@ -153,6 +153,20 @@ img.logo {
   color: #ff7800; !important;
 }
 
+.btn.btn- {
+  background-color: #333333;
+  color: #f0f8ff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 10px;
+}
+.btn.btn-:hover {
+  background-color: #8d888873;
+}
+
 /* Footer styles */
 footer {
   background-color: #333333;

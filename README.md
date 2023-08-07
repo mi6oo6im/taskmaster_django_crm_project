@@ -24,3 +24,7 @@ Explore the various features for managing tasks, contracts, offers, customers, a
 
 ## License
 This project is licensed under the MIT License.
+
+
+## Preview:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Home_light_theme.png?raw=true "Home page light theme")
