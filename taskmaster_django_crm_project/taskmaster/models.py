@@ -80,7 +80,6 @@ class Contact(TimestampMixin, models.Model):
         validators=(
             validators.MinLengthValidator(2),
             validate_first_capital,
-            validate_all_alpha,
         )
     )
     email = models.EmailField(
