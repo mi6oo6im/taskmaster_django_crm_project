@@ -141,11 +141,7 @@ class Offer(TimestampMixin, models.Model):
         blank=True,
     )
     valid_until = models.DateField()
-    potential_annual_value = models.FloatField(
-        validators=(
-            validators.MinLengthValidator(1),
-        ),
-    )
+    potential_annual_value = models.FloatField()
 
     @property
     def is_valid(self):
@@ -175,11 +171,7 @@ class Contract(TimestampMixin, models.Model):
     is_active = models.BooleanField(
         default=True,
     )
-    annual_value = models.FloatField(
-        validators=(
-            validators.MinLengthValidator(1),
-        ),
-    )
+    annual_value = models.FloatField()
 
     def __str__(self):
         return self.title
