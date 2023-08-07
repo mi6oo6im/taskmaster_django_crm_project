@@ -26,8 +26,12 @@ Explore the various features for managing tasks, contracts, offers, customers, a
 This project is licensed under the MIT License.
 
 
-## Preview:
+## Preview
 ### Home page light theme:
 ![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Home_light_theme.png?raw=true "Home page light theme")
 ### Home page dark theme:
 ![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Home_dark_theme.png?raw=true "Home page dark theme")
+### Log in light theme:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/log_in_light.png?raw=true "Log in Light theme")
+### Register dark theme:
+![Alt text](https://github.com/mi6oo6im/my_python_training/blob/main/web/Register_dark.png?raw=true "Register dark theme")
